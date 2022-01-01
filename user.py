@@ -1,9 +1,6 @@
 import mysql.connector
 from db_connection import cursor, cnt
-# must install lib named cryptography
-from cryptography.fernet import Fernet
 
-key = Fernet.generate_key()
 class User:
     def __init__(self, id, firstname, lastname, username, phone, email, password, role):
         self.id = id
@@ -36,9 +33,7 @@ class User:
                    "(id, firstname, lastname, username, phone, email, password, role) "
                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)")
 
-        fernet = Fernet(key)
-        encodedPass = fernet.encrypt((self.password).encode())
-        args = [self.id, self.firstname, self.lastname, self.username, self.phone, self.email, encodedPass, self.role]
+        args = [self.id, self.firstname, self.lastname, self.username, self.phone, self.email, self.password, self.role]
         cursor.execute(newuser, args)
         cnt.commit()
         cursor.close()
@@ -54,7 +49,9 @@ class User:
         result = cursor.fetchall()
         for user in result:
             if user[4] == self.username:
-                # password = bytes(user[7], 'utf-8')
-                # encPass = Fernet(key)
-                # decPass = encPass.decrypt(password)
-                print("User " + self.username + " logged in")
+                password = user[7].decode('UTF-8')
+
+                if password == self.password:
+                    print("User " + self.username + " Connected Successfully")
+                else:
+                    print("Passwords don't match, try again")

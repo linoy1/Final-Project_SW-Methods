@@ -10,7 +10,7 @@ from user import User
 import base64
 import sys
 
-person = User(120001234, 'nitsNan', 'shabtai', 'Nitnit', '0507879878', 'nitsan@gmail.com', 'nitsan15612', 'Manager')
+person = User(305365455, 'Bob', 'Daniels', 'Bobbyboo', '0501231345', 'bob@gmail.com', 'bob123456', 'Manager')
 # person.registerUser()
 
 person.loginUser()

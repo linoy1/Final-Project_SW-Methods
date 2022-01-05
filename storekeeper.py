@@ -1,3 +1,5 @@
+import self as self
+
 from user import User
 from db_connection import mycursor, mydb
 
@@ -5,49 +7,55 @@ from db_connection import mycursor, mydb
 class Storekeeper(User):
     def __init__(self, id, name, phone, email, password,username,type):
         super().__init__(id, name, phone, email, password,username,type)
-#####insert storekeeper#####
+
+# ####insert storekeeper#####
 # def insert_user(self):
-# # read values to be inserted
+#     # read values to be inserted
 #     self.id = input("Enter customer ID:")
 #     self.name = input("Enter customer Name:")
-#     self.phone = input("Enter customer Phone:")
 #     self.email = input("Enter customer Email:")
 #     self.password = input("Enter customer password:")
 #     self.username = input("Enter customer username:")
 #     self.type = input("Enter customer type:")
+#     self.phone = input("Enter customer Phone:")
 #
-#     # create the Insert query
-#     sql = "INSERT INTO storekeepers ( id, name, email, password,username,type,phone) VALUES (%s, %s,%s, %s,%s, %s,%s)"
-#     # create list of values typed from user to insert in customer table
-#     val = (id, name, phone, email, password,username,type)
-#     # Execute query with values
-#     mycursor.execute(sql, val)
-#     # commit for permanent storage in database
-#     mydb.commit()
-#     # display success message
-#     print(mycursor.rowcount, "Record inserted.")
+# # create the Insert query
+# sql = "INSERT INTO storekeepers ( id, name, email, password,username,type,phone) VALUES (%s, %s,%s, %s,%s, %s,%s)"
+# # create list of values typed from user to insert in customer table
+# val = (self.id, self.name, self.email, self.password,self.username,self.type,self.phone)
+# # Execute query with values
+# mycursor.execute(sql, val)
+# # commit for permanent storage in database
+# mydb.commit()
+# # display success message
+# print(mycursor.rowcount, "Record inserted.")
 
 ###update storekeepers#####
 # read values to be updated
 cid = input("Enter new storekeeper ID:")
 
 mycursor.execute("SELECT * FROM storekeepers WHERE id='"+cid+"'")
-oldDetail = mycursor.fetchall()
+# mycursor.execute("SELECT * FROM storekeepers")
+oldUserDetails = mycursor.fetchall()
 
-cnm = input("Enter new storekeeper Name:")
-cph = input("Enter new storekeeper Phone:")
-cem = input("Enter new storekeeper Email:")
-cps = input("Enter new storekeeper password:")
-cun = input("Enter new storekeeper username:")
-ctp = input("Enter new storekeeper type:")
-cph = input("Enter new storekeeper Phone:")
+for user in oldUserDetails:
+    if(user[0]==cid):
+        name=user[1]
+        print(name)
 
-#create update query
-mycursor.execute("update storekeepers set name='"+cnm+"', phone='"+cph+"', email='"+cem+"', password='"+cps+"', username='"+cun+"', type='"+ctp+"' where id="+cid)
-#commit Changes to DB
-mydb.commit()
-#display success message
-print(mycursor.rowcount, "Record updated.")
+# cnm = input("Enter new storekeeper Name:")
+# cem = input("Enter new storekeeper Email:")
+# cps = input("Enter new storekeeper password:")
+# cun = input("Enter new storekeeper username:")
+# ctp = input("Enter new storekeeper type:")
+# cph = input("Enter new storekeeper Phone:")
+
+# #create update query
+# mycursor.execute("UPDATE storekeepers SET name='"+cnm+"', phone='"+cph+"', email='"+cem+"', password='"+cps+"', username='"+cun+"', type='"+ctp+"' WHERE id="+cid)
+# #commit Changes to DB
+# mydb.commit()
+# #display success message
+# print(mycursor.rowcount, "Record updated.")
 
 
 

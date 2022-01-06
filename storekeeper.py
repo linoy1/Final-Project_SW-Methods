@@ -2,25 +2,24 @@ from self import self
 from user import User
 from db_connection import mycursor, mydb
 
-
 class Storekeeper(User):
     def __init__(self, id ,firstname, lastname, username, phone, email, password, role):
         super().__init__(id, firstname, lastname, username, phone, email, password, role)
 ####select selectStorekeeperById#####
-# Execute SELECT statement
 def selectStorekeeperById(self):
     self.id = input("Enter storekeeper ID:")
     mycursor.execute("SELECT * FROM storekeepers WHERE id='"+self.id+"'")
     # Fetch all records from table
     res = mycursor.fetchall()
     if res== []:
-        print("     user not exists!")
         print("\n")
-        return
-    # print
-    print("------------------------------------------------------------------------")
-    print("id   firstname   lastname    username    phone   email   password    role")
-    print("------------------------------------------------------------------------")
+        print("user not exists!")
+        print("\n")
+        return -1
+    else:
+        print("------------------------------------------------------------------------")
+        print("id   firstname   lastname    username    phone   email   password    role")
+        print("------------------------------------------------------------------------")
 
     for x in res:
         print(x[0], "  ", x[1], "  ", x[2], "  ", x[3], "  ", x[4], "  ", x[5], "  ", x[6], "  ", x[7])
@@ -28,14 +27,10 @@ def selectStorekeeperById(self):
 
 #####select all storekeepers#####
 # Execute SELECT statement
-def selectAllStorekeepers(self):
-
+def selectAllStorekeepers():
     mycursor.execute("SELECT * FROM storekeepers")
-    # Fetch all records from table
-
     res = mycursor.fetchall()
 
-    # print
     print("------------------------------------------------------------------------")
     print("id   firstname   lastname    username    phone   email   password    role")
     print("------------------------------------------------------------------------")
@@ -43,6 +38,7 @@ def selectAllStorekeepers(self):
     for x in res:
         print(x[0], "  ", x[1], "  ", x[2], "  ", x[3], "  ", x[4], "  ", x[5], "  ", x[6], "  ", x[7])
     print("------------------------------------------------------------------------")
+
 ####insert storekeeper#####
 def insert_user(self):
     # read values to be inserted
@@ -54,6 +50,7 @@ def insert_user(self):
         print("user already exists!")
         print("\n")
         return
+
     else:
         self.firstname = input("First Name: ")
         self.lastname = input("Last Name: ")
@@ -107,7 +104,8 @@ def insert_user(self):
 def update_user(self):
     # read values to be updated
     # self.id = input("Enter storekeeper ID:")
-    selectStorekeeperById(self)
+    if(selectStorekeeperById(self) == -1):
+        return
 
     print("which field do you want update?")
     ch = 0
@@ -195,7 +193,7 @@ def main():
         if (ch == 3):
             selectStorekeeperById(self)
         if (ch == 4):
-            selectAllStorekeepers(self)
+            selectAllStorekeepers()
 
 
 # call main

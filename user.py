@@ -41,6 +41,7 @@ class User:
         print("User " + self.firstname + " " + self.lastname + " created successfully.")
 
     def loginUser(self):
+        user_d = []
         print("Login to the System")
         self.username = input("Username: ")
         self.password = input("Password: ")
@@ -54,3 +55,10 @@ class User:
                     print("User " + self.username + " logged in successfully")
                 else:
                     print("Passwords don't match, try again")
+                    return
+            elif user[4] != self.username:
+                user_d = [user[4]]
+                continue
+
+        if user_d[0] != self.username:
+            print("Username does not exist in the system")

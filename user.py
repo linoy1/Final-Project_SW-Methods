@@ -7,14 +7,15 @@ mycursor = mydb.cursor()
 
 
 class User:
-    def __init__(self, id, name, phone, email, password,username,type):
+    def __init__(self,id,firstname,lastname, username,phone,email, password,role):
         self.id = id
-        self.name = name
+        self.firstname = firstname
+        self.lastname = lastname
+        self.username = username
         self.phone = phone
         self.email = email
         self.password = password
-        self.username = username
-        self.type = type
+        self.role = role
 
 #####create table#####
 # mycursor.execute("CREATE TABLE User (id int auto_increment primary key, name varchar(255),phone int(255),"
@@ -34,10 +35,10 @@ class User:
 # for i in mycursor:
 #     print(i)
 
-
-mycursor.execute("SELECT * FROM User")
-
-myresult = mycursor.fetchall()
-
-for x in myresult:
-  print(x)
+#
+# mycursor.execute("SELECT * FROM User")
+#
+# myresult = mycursor.fetchall()
+#
+# for x in myresult:
+#   print(x)

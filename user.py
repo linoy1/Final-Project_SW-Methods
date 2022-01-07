@@ -52,6 +52,7 @@ class User:
             if user[4] == self.username:
                 password = user[7].decode('UTF-8')
                 if password == self.password:
+                    user_d = [user[4]]
                     print("User " + self.username + " logged in successfully")
                 else:
                     print("Passwords don't match, try again")

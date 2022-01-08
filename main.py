@@ -1,21 +1,17 @@
-# This is a sample Python script.
-import db_connection
 
-import mysql.connection
-from db_connection import mycursor, mydb
+import mysql.connector
+from db_connection import cursor, cnt
+from user import User
+from clothingItem import clothingItem
+import base64
+import sys
 
+person = User(305365455, 'Bob', 'Daniels', 'Bobbyboo', '0501231345', 'bob@gmail.com', 'bob123456', 'Manager')
+# person.registerUser()
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# person.loginUser()
 
+item = clothingItem(1, 'Short Blouse', 'Beige', 'M', 150 , 1, 'Short', 159.99)
 
-# def print_hi(name):
-#     # Use a breakpoint in the code line below to debug your script.
-#     print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-#
-#
-# # Press the green button in the gutter to run the script.
-# if __name__ == '__main__':
-#     print_hi('PyCharm')
-#
-# # See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# item.addItem()
+item.updateItem()

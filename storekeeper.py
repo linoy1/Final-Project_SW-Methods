@@ -72,34 +72,6 @@ def insert_user(self):
         mycursor.close()
         mydb.close()
 
-
-# ##update storekeepers#####
-# # def update_user(self):
-#     # read values to be updated
-#     id = input("Enter customer ID:")
-#     mycursor.execute("SELECT * FROM storekeepers WHERE id='"+id+"'")
-#     oldUserDetails = mycursor.fetchall()
-#     print(oldUserDetails[0][1])
-#     # for user in oldUserDetails:
-#     #     if(user[0]== self.id):
-#     #         name=user[1]
-#     #         print(name)
-#     #
-#     #     self.firstname = input("Enter customer Name:")
-#     #     self.lastname = input("Enter customer Name:")
-#     #     self.username = input("Enter customer username:")
-#     #     self.phone = input("Enter customer Phone:")
-#     #     self.email = input("Enter customer Email:")
-#     #     self.password = input("Enter customer password:")
-#     #     self.role = input("Enter customer role:")
-#
-#     # #create update query
-#     # mycursor.execute("UPDATE storekeepers SET name='"+self.firstname+"', phone='"+cph+"', email='"+cem+"', password='"+cps+"', username='"+cun+"', type='"+ctp+"' WHERE id="+id)
-#     # #commit Changes to DB
-#     mydb.commit()
-#     # #display success message
-#     print(mycursor.rowcount, "Record updated.")
-
 ##update storekeepers#####
 def update_user(self):
     # read values to be updated

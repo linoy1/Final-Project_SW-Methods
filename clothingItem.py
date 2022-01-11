@@ -123,7 +123,36 @@ class clothingItem:
             if ch < 8:
                 print(cursor.rowcount, "Record updated.\n")
 
-    # def viewItem(self):
-    #
-    # def deleteItem(self, item):
 
+    def viewItem(self):
+        self.id = input("Enter Item ID: ")
+        cursor.execute("SELECT * FROM clothingItems WHERE item_id='" + self.id + "'")
+        # Fetch all records from table
+        res = cursor.fetchall()
+        if res == []:
+            print("Item does not exist")
+            return -1
+        else:
+            print("-----------------------------------------------------------------------------------------------")
+            print("Item Number   Item Id    Item Name     Color   Size    Quantity   Category Id   Kind     Price")
+            print("-----------------------------------------------------------------------------------------------")
+
+        for x in res:
+            print("    ", x[0], "        ", x[1], "    ", x[2], "   ", x[3], "   ", x[4], "     ", x[5], "        ", x[6], "       ", x[7], "  ", x[8])
+        print("-----------------------------------------------------------------------------------------------")
+
+    def deleteItem(self):
+        self.id = input("Enter Item ID You Would Like To Delete: ")
+        cursor.execute("SELECT * FROM clothingItems WHERE item_id='" + self.id + "'")
+        # Fetch all records from table
+        res = cursor.fetchall()
+        if res == []:
+            print("Item does not exist")
+            return -1
+        else:
+            cursor.execute("DELETE FROM clothingItems WHERE item_id='" + self.id + "'")
+            cnt.commit()
+            cursor.close()
+            cnt.close()
+
+            print(self.id + " Has Been Deleted Successfully")

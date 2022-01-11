@@ -13,7 +13,7 @@ import sys
 item = clothingItem(2, 'Long Denim', 'Indigo', 'S', 300 , 3, 'Long', 215)
 
 # item.addItem()
-# item.updateItem()
+item.updateItem()
 
-# item.viewItem()
+item.viewItem()
 # item.deleteItem()
